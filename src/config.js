@@ -1,5 +1,5 @@
 
-const SERVICE_HOSTNAME = "http://localhost:8000";
+const SERVICE_HOSTNAME = "http://127.0.0.1:8000";
 
 export const PATHS = {
     SESSION: "/sessions",
