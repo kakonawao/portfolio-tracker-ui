@@ -8,7 +8,9 @@ import {
 const initialState = {
     loading: false,
     authenticated: false,
-    username: null
+    username: null,
+    token: null,
+    tokenType: null
 };
 
 export const sessionReducer = (state = initialState, action) => {
@@ -26,6 +28,7 @@ export const sessionReducer = (state = initialState, action) => {
         case RECEIVE_TOKEN:
             return {
                 ...state,
+                ...action.data,
                 loading: false,
                 authenticated: true
             };

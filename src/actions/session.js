@@ -33,10 +33,27 @@ export const login = (data) => {
     return function (dispatch) {
         dispatch(requestToken());
 
-        const opts = {method: "POST", body: JSON.stringify(data)};
+        const formData = {
+            ...data,
+            grant_type: "password"
+        };
+        const body = new URLSearchParams(formData).toString();
+        const opts = {
+            method: "POST",
+            body: body,
+            headers: {"Content-Type": "application/x-www-form-urlencoded"}
+        };
         fetch(getEndpoint(PATHS.SESSION), opts)
             .then(response => handleResponse(response))
-            .then(data => dispatch(receiveToken(data)))
+            .then((data) => {
+                const tokenInfo = {
+                    username: data.username,
+                    token: data.access_token,
+                    tokenType: data.token_type
+                };
+
+                dispatch(receiveToken(tokenInfo))
+            })
             .catch(data => dispatch(failToken(data)));
     }
 };

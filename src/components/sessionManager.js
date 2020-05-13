@@ -1,18 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import LoginForm from "../components/loginForm";
+import LoginForm from "./loginForm";
 import { login } from "../actions/session";
 
 
 const mapStateToProps = (state) => {
     return {
-        authenticated: state.authenticated,
-        username: state.username
+        authenticated: state.session.authenticated,
+        username: state.session.username
     }
 };
 
-class SessionPage extends React.Component {
+class SessionManager extends React.Component {
 
     constructor(props) {
         super(props);
@@ -33,22 +33,18 @@ class SessionPage extends React.Component {
     };
 
     render() {
-        if (!this.props.authenticated) {
-            return (
+        return (
+            <div>
+                <h2>Login</h2>
+                <p>
+                    You need to log in to use this service.
+                </p>
                 <LoginForm login={this.login}
                            username={this.inputs.username}
                            password={this.inputs.password}/>
-            );
-        }
-
-
-        return (
-            <div>
-                <h2>Session</h2>
-                <p>You are authenticated as {this.props.username}.</p>
             </div>
         );
     };
 }
 
-export default connect(mapStateToProps)(SessionPage);
+export default connect(mapStateToProps)(SessionManager);
