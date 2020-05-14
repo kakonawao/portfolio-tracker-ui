@@ -1,6 +1,6 @@
 import fetch from "cross-fetch";
 
-import { handleResponse } from "./util";
+import { getRequestOptions, handleResponse } from "./util";
 import { getEndpoint, PATHS } from "../config";
 
 
@@ -28,11 +28,11 @@ export const receiveAccounts = (data) => {
     }
 };
 
-export const fetchAccounts = () => {
+export const fetchAccounts = (session) => {
     return function (dispatch) {
         dispatch(requestAccounts());
 
-        return fetch(getEndpoint(PATHS.ACCOUNTS))
+        return fetch(getEndpoint(PATHS.ACCOUNTS), getRequestOptions(session))
             .then(response => handleResponse(response))
             .then(data => dispatch(receiveAccounts(data)))
             .catch(data => dispatch(failAccounts(data)));

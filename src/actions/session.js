@@ -1,6 +1,6 @@
 import fetch from "cross-fetch";
 
-import { handleResponse } from "./util";
+import { getRequestOptions, handleResponse } from "./util";
 import { getEndpoint, PATHS } from "../config";
 
 
@@ -38,12 +38,8 @@ export const login = (data) => {
             grant_type: "password"
         };
         const body = new URLSearchParams(formData).toString();
-        const opts = {
-            method: "POST",
-            body: body,
-            headers: {"Content-Type": "application/x-www-form-urlencoded"}
-        };
-        fetch(getEndpoint(PATHS.SESSION), opts)
+
+        fetch(getEndpoint(PATHS.SESSION), getRequestOptions(null, "POST", body, "x-www-form-urlencoded"))
             .then(response => handleResponse(response))
             .then((data) => {
                 const tokenInfo = {

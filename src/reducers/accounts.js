@@ -7,7 +7,7 @@ import {
 
 const initialState = {
     loading: false,
-    accounts: []
+    items: []
 };
 
 export const accountsReducer = (state = initialState, action) => {
@@ -26,7 +26,7 @@ export const accountsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                accounts: action.data
+                items: action.data
             };
         default:
             return state;
