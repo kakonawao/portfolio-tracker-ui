@@ -8,8 +8,7 @@ import SessionManager from "../components/sessionManager";
 
 const mapStateToProps = (state) => {
     return {
-        authenticated: state.session.authenticated,
-        username: state.session.username
+        session: state.session
     }
 };
 
@@ -20,11 +19,11 @@ class DashboardPage extends React.Component {
     }
 
     render() {
-        if (this.props.authenticated) {
+        if (this.props.session.authenticated) {
             return (
                 <div>
-                    <AccountsSection />
-                    <TransactionsSection />
+                    <AccountsSection/>
+                    <TransactionsSection/>
                 </div>
             );
         }
