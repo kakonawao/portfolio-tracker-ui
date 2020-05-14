@@ -14,10 +14,6 @@ const mapStateToProps = (state) => {
 
 class DashboardPage extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         if (this.props.session.authenticated) {
             return (
