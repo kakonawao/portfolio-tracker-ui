@@ -1,7 +1,7 @@
 import React from "react";
 
 
-class TransactionsSection extends React.Component {
+export class TransactionsSection extends React.Component {
 
     render() {
         return (

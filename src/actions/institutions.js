@@ -1,6 +1,6 @@
 import fetch from "cross-fetch";
 
-import { handleResponse } from "./util";
+import {getRequestOptions, handleResponse} from "./util";
 import { getEndpoint, PATHS } from "../config";
 
 export const REQUEST_INSTITUTIONS = "REQUEST_INSTITUTIONS";
@@ -14,10 +14,10 @@ export const requestInstitutions = () => {
     }
 };
 
-export const failInstitutions = (response) => {
+export const failInstitutions = (error) => {
     return {
         type: FAIL_INSTITUTIONS,
-        response
+        error
     }
 };
 
@@ -28,14 +28,14 @@ export const receiveInstitutions = (data) => {
     }
 };
 
-export const fetchInstitutions = () => {
+export const fetchInstitutions = (session) => {
     return function (dispatch) {
 
         dispatch(requestInstitutions());
 
-        return fetch(getEndpoint(PATHS.INSTITUTIONS))
+        return fetch(getEndpoint(PATHS.INSTITUTIONS), getRequestOptions(session))
             .then(response => handleResponse(response))
             .then(data => dispatch(receiveInstitutions(data)))
-            .catch(data => dispatch(failInstitutions(data)));
+            .catch(error => dispatch(failInstitutions(error)));
     }
 };

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DashboardPage> renders a button that redirects to session page is user is not authenticated 1`] = `
+<div>
+  <h2>
+    Login Required
+  </h2>
+  <p>
+    You need to log in first.
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    Log in
+  </button>
+</div>
+`;
+
+exports[`<DashboardPage> renders accounts and transactions components when user is authenticated 1`] = `
+<div>
+  <Connect(AccountsSection) />
+  <TransactionsSection />
+</div>
+`;

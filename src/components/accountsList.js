@@ -20,7 +20,7 @@ class AccountsList extends React.Component {
     renderList(items) {
         return (
             items.map(i =>
-                <AccountItem code={i.code} description={i.description} holder={i.holder}/>
+                <AccountItem key={i.code} code={i.code} description={i.description} holder={i.holder}/>
             )
         );
     }

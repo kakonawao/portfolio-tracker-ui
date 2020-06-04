@@ -1,7 +1,7 @@
 import React from "react";
 
 
-class InstrumentsPage extends React.Component {
+export class InstrumentsPage extends React.Component {
 
     render() {
         return (

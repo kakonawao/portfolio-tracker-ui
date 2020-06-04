@@ -1,7 +1,7 @@
 import React from "react";
 
 
-class InstitutionsPage extends React.Component {
+export class InstitutionsPage extends React.Component {
 
     render() {
         return (

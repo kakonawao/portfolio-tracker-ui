@@ -7,6 +7,7 @@ import {
 
 const initialState = {
     loading: false,
+    error: null,
     authenticated: false,
     username: null,
     token: null,
@@ -17,13 +18,14 @@ export const sessionReducer = (state = initialState, action) => {
     switch(action.type) {
         case REQUEST_TOKEN:
             return {
-                ...state,
+                ...initialState,
                 loading: true
             };
         case FAIL_TOKEN:
             return {
                 ...state,
-                loading: false
+                loading: false,
+                error: action.error
             };
         case RECEIVE_TOKEN:
             return {

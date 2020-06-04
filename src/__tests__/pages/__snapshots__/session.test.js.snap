@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SessionPage> renders username when user is authenticated 1`] = `
+<div>
+  <h2>
+    Session
+  </h2>
+  <p>
+    You are logged in as 
+    potato
+    .
+  </p>
+</div>
+`;
+
+exports[`<SessionPage> user can log in when user is not authenticated 1`] = `
+<div>
+  <h2>
+    Session
+  </h2>
+  <LoginForm
+    login={[Function]}
+    password={
+      Object {
+        "current": null,
+      }
+    }
+    username={
+      Object {
+        "current": null,
+      }
+    }
+  />
+</div>
+`;

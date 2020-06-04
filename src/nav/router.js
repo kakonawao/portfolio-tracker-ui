@@ -9,7 +9,7 @@ import {
 import DashboardPage from "../pages/dashboard";
 import InstitutionsPage from "../pages/institutions";
 import InstrumentsPage from "../pages/instruments";
-import SessionPage from "../components/sessionManager";
+import SessionPage from "../pages/session";
 
 
 export default function NavigationRouter() {
