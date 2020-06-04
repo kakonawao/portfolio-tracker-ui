@@ -7,6 +7,7 @@ import {
 
 const initialState = {
     loading: false,
+    error: null,
     items: []
 };
 
@@ -15,11 +16,13 @@ export const accountsReducer = (state = initialState, action) => {
         case REQUEST_ACCOUNTS:
             return {
                 ...state,
-                loading: true,
+                error: null,
+                loading: true
             };
         case FAIL_ACCOUNTS:
             return {
                 ...state,
+                error: action.error,
                 loading: false
             };
         case RECEIVE_ACCOUNTS:

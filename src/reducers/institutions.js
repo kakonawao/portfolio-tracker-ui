@@ -7,7 +7,8 @@ import {
 
 const initialState = {
     loading: false,
-    institutions: []
+    error: null,
+    items: []
 };
 
 export const institutionsReducer = (state = initialState, action) => {
@@ -15,17 +16,20 @@ export const institutionsReducer = (state = initialState, action) => {
         case REQUEST_INSTITUTIONS:
             return {
                 ...state,
+                error: null,
                 loading: true
             };
         case FAIL_INSTITUTIONS:
             return {
                 ...state,
+                error: action.error,
                 loading: false
             };
         case RECEIVE_INSTITUTIONS:
             return {
+                ...state,
                 loading: false,
-                institutions: action.data
+                items: action.data
             };
         default:
             return state;

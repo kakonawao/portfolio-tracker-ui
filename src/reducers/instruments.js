@@ -7,25 +7,29 @@ import {
 
 const initialState = {
     loading: false,
-    instruments: []
-}
+    error: null,
+    items: []
+};
 
 export const instrumentsReducer = (state = initialState, action) => {
     switch(action.type) {
         case REQUEST_INSTRUMENTS:
             return {
                 ...state,
+                error: null,
                 loading: true
             };
         case FAIL_INSTRUMENTS:
             return {
                 ...state,
+                error: action.error,
                 loading: false
             };
         case RECEIVE_INSTRUMENTS:
             return {
+                ...state,
                 loading: false,
-                instruments: action.data
+                items: action.data
             };
         default:
             return state;

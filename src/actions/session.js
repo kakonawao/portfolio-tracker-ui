@@ -22,10 +22,10 @@ export const receiveToken = (data) => {
     }
 };
 
-export const failToken = (data) => {
+export const failToken = (error) => {
     return {
         type: FAIL_TOKEN,
-        data
+        error
     }
 };
 
@@ -38,18 +38,15 @@ export const login = (data) => {
             grant_type: "password"
         };
         const body = new URLSearchParams(formData).toString();
+        const url = getEndpoint(PATHS.SESSION);
+        const opts = getRequestOptions(null, "POST", body, "x-www-form-urlencoded");
 
-        fetch(getEndpoint(PATHS.SESSION), getRequestOptions(null, "POST", body, "x-www-form-urlencoded"))
+        return fetch(url, opts)
             .then(response => handleResponse(response))
-            .then((data) => {
-                const tokenInfo = {
+            .then(data => dispatch(receiveToken({
                     username: data.username,
                     token: data.access_token,
-                    tokenType: data.token_type
-                };
-
-                dispatch(receiveToken(tokenInfo))
-            })
-            .catch(data => dispatch(failToken(data)));
+                    tokenType: data.token_type})))
+            .catch(error => dispatch(failToken(error)));
     }
 };

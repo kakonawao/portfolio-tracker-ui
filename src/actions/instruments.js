@@ -1,6 +1,6 @@
 import fetch from "cross-fetch";
 
-import { handleResponse } from "./util";
+import {getRequestOptions, handleResponse} from "./util";
 import { getEndpoint, PATHS } from "../config";
 
 
@@ -28,14 +28,14 @@ export const receiveInstruments = (data) => {
     }
 };
 
-export const fetchInstruments = () => {
+export const fetchInstruments = (session) => {
     return function (dispatch) {
 
         dispatch(requestInstruments());
 
-        return fetch(getEndpoint(PATHS.INSTRUMENTS))
+        return fetch(getEndpoint(PATHS.INSTRUMENTS), getRequestOptions(session))
             .then(response => handleResponse(response))
             .then(data => dispatch(receiveInstruments(data)))
-            .catch(data => dispatch(failInstruments(data)));
+            .catch(error => dispatch(failInstruments(error)));
     }
 };

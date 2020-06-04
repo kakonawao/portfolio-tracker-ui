@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import AccountsSection from "../components/accountsSection";
 import TransactionsSection from "../components/transactionsSection";
-import SessionManager from "../components/sessionManager";
 
 
 const mapStateToProps = (state) => {
@@ -12,23 +11,37 @@ const mapStateToProps = (state) => {
     }
 };
 
-class DashboardPage extends React.Component {
+export class DashboardPage extends React.Component {
+
+    renderUserData = () => {
+        return (
+            <div>
+                <AccountsSection />
+                <TransactionsSection />
+            </div>
+        );
+    };
+
+    renderLoginRequired = () => {
+        return (
+            <div>
+                <h2>Login Required</h2>
+                <p>You need to log in first.</p>
+                <button onClick={this.redirectToSessionPage}>Log in</button>
+            </div>
+        )
+    };
+
+    redirectToSessionPage = () => {
+        this.props.history.push("/session");
+    };
 
     render() {
         if (this.props.session.authenticated) {
-            return (
-                <div>
-                    <AccountsSection/>
-                    <TransactionsSection/>
-                </div>
-            );
+            return this.renderUserData();
+        } else {
+            return this.renderLoginRequired();
         }
-
-        return (
-            <div>
-                <SessionManager />
-            </div>
-        );
     }
 }
 

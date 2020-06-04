@@ -6,13 +6,16 @@ import { store } from "../store";
 import App from "../App";
 
 
-test("", () => {
-    const { getByText } = render(
-        <Provider store={store}>
-            <App />
-        </Provider>
-    );
+describe("App", () => {
 
-    const linkElement = getByText(/Dashboard/i);
-    expect(linkElement).toBeInTheDocument();
+    test("renders correctly", () => {
+        const { getByText } = render(
+            <Provider store={store}>
+                <App />
+            </Provider>
+        );
+
+        const linkElement = getByText(/Dashboard/i);
+        expect(linkElement).toBeInTheDocument();
+    })
 });

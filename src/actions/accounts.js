@@ -14,10 +14,10 @@ export const requestAccounts = () => {
     }
 };
 
-export const failAccounts = (response) => {
+export const failAccounts = (error) => {
     return {
         type: FAIL_ACCOUNTS,
-        response
+        error
     }
 };
 
@@ -35,7 +35,6 @@ export const fetchAccounts = (session) => {
         return fetch(getEndpoint(PATHS.ACCOUNTS), getRequestOptions(session))
             .then(response => handleResponse(response))
             .then(data => dispatch(receiveAccounts(data)))
-            .catch(data => dispatch(failAccounts(data)));
-
+            .catch(error => dispatch(failAccounts(error)));
     }
 };

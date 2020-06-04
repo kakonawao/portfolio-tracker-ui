@@ -21,7 +21,6 @@ export const getRequestOptions = (session = null, method = "GET", body = null, c
 Analyse a response object and return its JSON-decoded data if OK, throw an error otherwise.
  */
 export const handleResponse = (response) => {
-    console.log(response);
     if (response.ok) {
         return response.json();
     }

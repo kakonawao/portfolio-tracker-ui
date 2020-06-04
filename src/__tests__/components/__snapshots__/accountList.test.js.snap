@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AccountList> renders empty list 1`] = `
+<p>
+  You have no accounts.
+</p>
+`;
+
+exports[`<AccountList> renders list when items are present 1`] = `
+Array [
+  <AccountItem
+    code="1"
+    description="bank account"
+    holder={
+      Object {
+        "name": "Bank of Ireland",
+      }
+    }
+    key="1"
+  />,
+  <AccountItem
+    code="2"
+    description="cash account"
+    holder={null}
+    key="2"
+  />,
+]
+`;
+
+exports[`<AccountList> renders mesage when data is loading 1`] = `
+<p>
+  Loading accounts...
+</p>
+`;

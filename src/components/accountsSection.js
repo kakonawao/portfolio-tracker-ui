@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
     }
 };
 
-class AccountsSection extends React.Component {
+export class AccountsSection extends React.Component {
 
     constructor(props) {
         super(props);

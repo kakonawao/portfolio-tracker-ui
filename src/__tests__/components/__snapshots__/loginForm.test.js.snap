@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginForm> renders form 1`] = `
+<form>
+  <div>
+    <label>
+      Username
+      <input
+        name="username"
+        type="text"
+      />
+    </label>
+    <label>
+      Password
+      <input
+        name="password"
+        type="password"
+      />
+    </label>
+  </div>
+  <div>
+    <button
+      onClick={[MockFunction]}
+      type="submit"
+    >
+      Login
+    </button>
+  </div>
+</form>
+`;
